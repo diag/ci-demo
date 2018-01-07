@@ -13,8 +13,8 @@ before_install:
 - mkdir -p /tmp/logs
 install:
 - set -o pipefail && npm install -g diag@latest 2>&1 | tee /tmp/logs/diag_install.log
-- set -o pipefail && npm install 2>&1 | tee /tmp/logs/npm_install.log
 script:
+- set -o pipefail && npm install 2>&1 | tee /tmp/logs/npm_install.log
 - set -o pipefail && npm run test 2>&1 | tee /tmp/logs/test.log
 - set -o pipefail && npm run build 2>&1 | tee /tmp/logs/build.log
 after_failure:
