@@ -23,7 +23,7 @@ after_failure:
   -j > /tmp/dataset.json
 - cat /tmp/dataset.json | jq -r '. | "d/\(.id.space_id)/\(.id.item_id)"' > /tmp/dataset_id
 - diag cp /tmp/logs --name logs.zip $(cat /tmp/dataset_id)
-- diag cp /home/travis/build/diag/diag-app --name source.zip --gitignore $(cat /tmp/dataset_id)
+- diag cp /home/travis/build/diag/ci-demo --name source.zip --gitignore $(cat /tmp/dataset_id)
 notifications:
   slack:
-    secure: RkINH5QUqYPmi74RONHbDHtMZ3NsI7ONwB+54ZquK31et+izeYxiTS4XJ8Kr6SFQLouozHvbn9QB26RMIupkcVXUGhaoBhIbye/Pmw+5rTEJVXunt19jNpbXx5QpIz94/a98NcrIRxO50mOW3xaypAZnAMwIPNCKgRu2mhnGngJWjiOOd0uGFbznOixdG3wvgpzfD6ST0IBEwzK1LbZ4Lodu6M2TG3zRtRhX1ekd0XsKqHMHZmD2wrje716c6Ufu/tIBWnqTBPrlPEETlsrV1nx2ABDq2uBWoaVmUkVWlmUup1siAXUQnHPohqNpNzAGLBKL7B5il8eF5TX4CLYG/Lw5jCIO6HsBXBFqndSce8rHecnim6SmqZjzucOcu0MYP1py19WnNOOoUnMW2clwUJ8nYqasTRvXJnKOHgjRoTorX41nPCXopoKXqMenXv/Py/SnG5HFq1ETEGs1BZCTIXqbBflGlzkieINdfWapsF+KYc+JZUy4JdIjXG8ia7+4yaRVd2n9MT/U1nhCy+IHV9/BlMBC34KtjZprAXxgl8aqxIZxzzjNU3Bgj9KHvKWTWGZC/Agr2stEF5FTgQjCuAb350Id1syx6rgxJor0f/QioMJbx6ggzCOuLCFTLGcdUgeSc3e+alK0otb+g8U4aVj5q1sa72Ax43aEOXPYanY=
+    secure: SgtRpa1JNoxv+ZRTsIab2Neyic4sjVqhpTJZ54RW5NmjPImie82ZG+/w2gHtTEHAPNUR3gD01FYIIMY0ftJilMG1Uq37exWxQZXSDpGud99Pc2mSxhDagOqrclx6cuL6lHeFWdSeU/1s+1IfKYBEmgsaFdx0+ugn3nQG4b4oHZUEdHo3qlY0GQJCongHSrr21KyUlRSb9l8quhXdqRbc+U9HI84/lIsqb7rgwzev1ZgB4MB8TpjcaqNOy5AtuBMyrvUfijs1dWDEbM6o8Kk9wpuz4Q4i1xpzrHNmt5z3g5IRsNEeJpmmh8g6RaWVTYtw1dKxXKZW7Kt+H3Bh1+3eDam8pxgp/NCYFSvpU+00eFQsIDGd5Cq0abNMob3pLQoaz1nzf6YEcfAapQA9ss64WXsGPkWdB9jQ6LrnUwX7MUpIaXTrwHPajR8hOlKUYKEYPtp4vGNksSZMP0ENih8odBnijNo75v8kj5DUtLGqXb3JSECWB85p+RYiy1Tr4/Up1LbP+U/I3zaW6VwiBnpid4GHnBUZOLLTnldLh1eXb+uINuHMb6qr+pV/LegoD2/smrFolu2RWNKWiGZMJa1FL/Tp499MTDt6IXLq0xzQcNVMCHUJXdULp/7gZIZQMIqykh4UCT59oXxTQmbnhoY4CwSx2Zo352mu0hBz0GVwwvw=
