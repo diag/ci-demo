@@ -28,7 +28,7 @@ after_failure:
 - diag cp --tmpDir /tmp/diag /var/log
 - git ls-files -o
 - gem install --no-document travis
-- diag run -n "build.log" -- travis logs
+- diag run -n "build.log" -- travis logs --no-interactive --no-stream
 # - find / -print
 - diag run -n commit.log -- git log -20
 notifications:
