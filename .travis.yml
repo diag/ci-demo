@@ -1,10 +1,6 @@
 language: node_js
 nodejs:
 - '8'
-addons:
-  apt:
-    packages:
-    - jq
 env:
   global:
   - DIAG_HOST=https://demo.diag.ai
@@ -13,6 +9,7 @@ env:
 before_install:
 - mkdir -p /tmp/diag/bin
 - export PATH=$PATH:$DIAG_HOME/bin
+- gem install --no-document travis
 install:
 - curl -Lso /tmp/diag/bin/diag https://app.diag.ai/dl/linux/diag && chmod 755 /tmp/diag/bin/diag
 script:
@@ -25,12 +22,5 @@ after_failure:
   ${TRAVIS_BUILD_NUMBER:--1}" --desc "${TRAVIS_COMMIT_MESSAGE:-missing_commit_message}"
   --custom '{ "service": "gdi-http" }' --setcurrent
 - diag cp --name source.zip --gitignore /home/travis/build/diag/ci-demo
-- diag cp --tmpDir /tmp/diag /var/log
-- git ls-files -o
-- gem install --no-document travis
 - diag run -n "build.log" -- travis logs --no-interactive --no-stream
-# - find / -print
 - diag run -n commit.log -- git log -20
-notifications:
-  slack:
-    secure: SgtRpa1JNoxv+ZRTsIab2Neyic4sjVqhpTJZ54RW5NmjPImie82ZG+/w2gHtTEHAPNUR3gD01FYIIMY0ftJilMG1Uq37exWxQZXSDpGud99Pc2mSxhDagOqrclx6cuL6lHeFWdSeU/1s+1IfKYBEmgsaFdx0+ugn3nQG4b4oHZUEdHo3qlY0GQJCongHSrr21KyUlRSb9l8quhXdqRbc+U9HI84/lIsqb7rgwzev1ZgB4MB8TpjcaqNOy5AtuBMyrvUfijs1dWDEbM6o8Kk9wpuz4Q4i1xpzrHNmt5z3g5IRsNEeJpmmh8g6RaWVTYtw1dKxXKZW7Kt+H3Bh1+3eDam8pxgp/NCYFSvpU+00eFQsIDGd5Cq0abNMob3pLQoaz1nzf6YEcfAapQA9ss64WXsGPkWdB9jQ6LrnUwX7MUpIaXTrwHPajR8hOlKUYKEYPtp4vGNksSZMP0ENih8odBnijNo75v8kj5DUtLGqXb3JSECWB85p+RYiy1Tr4/Up1LbP+U/I3zaW6VwiBnpid4GHnBUZOLLTnldLh1eXb+uINuHMb6qr+pV/LegoD2/smrFolu2RWNKWiGZMJa1FL/Tp499MTDt6IXLq0xzQcNVMCHUJXdULp/7gZIZQMIqykh4UCT59oXxTQmbnhoY4CwSx2Zo352mu0hBz0GVwwvw=
