@@ -13,7 +13,7 @@ env:
 before_install:
 - mkdir -p /tmp/diag/bin
 install:
-- curl -Lso /tmp/diag/bin https://app.diag.ai/dl/linux/diag && chmod 755 /tmp/diag/bin/diag && ln -s /tmp/diag/bin/diag /usr/local/bin/diag
+- curl -Lso /tmp/diag/bin/diag https://app.diag.ai/dl/linux/diag && chmod 755 /tmp/diag/bin/diag && ln -s /tmp/diag/bin/diag /usr/local/bin/diag
 script:
 - npm install
 - npm run test
