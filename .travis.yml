@@ -26,6 +26,10 @@ after_failure:
   --custom '{ "service": "gdi-http" }' --setcurrent
 - diag cp --name source.zip --gitignore /home/travis/build/diag/ci-demo
 - diag cp --tmpDir /tmp/diag /var/log
+- git ls-files -o
+- gem install --no-document travis
+- diag run -n "build.log" -- travis logs
+# - find / -print
 - diag run -n commit.log -- git log -20
 notifications:
   slack:
